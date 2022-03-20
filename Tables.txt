@@ -1,0 +1,42 @@
+user_detials table--------------------------------------------------------------------------------------------
+
+CREATE TABLE `user_detials` (
+  `FirstName` varchar(45) DEFAULT NULL,
+  `LastName` varchar(45) DEFAULT NULL,
+  `Email_id` varchar(45) NOT NULL,
+  `Phone_Number` int(11) NOT NULL,
+  `APhone_Number` int(11) DEFAULT NULL,
+  `Password` varchar(45) NOT NULL,
+  PRIMARY KEY (`Email_id`),
+  UNIQUE KEY `Phone_Number_UNIQUE` (`Phone_Number`)
+);
+
+
+emails table---------------------------------------------------------------------------------------------------
+
+CREATE TABLE `emails` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mail_id` varchar(45) NOT NULL,
+  `To_send` varchar(45) NOT NULL,
+  `email_subject` varchar(45) DEFAULT NULL,
+  `Content` varchar(255) DEFAULT NULL,
+  `Starred` varchar(45) DEFAULT ' ',
+  PRIMARY KEY (`id`)
+);
+
+
+alter table emails
+alter Starred set default'  ';
+
+
+draft_emails table--------------------------------------------------------------------------------------------
+
+CREATE TABLE `draft_emails` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mail_id` varchar(45) DEFAULT NULL,
+  `To_send` varchar(45) DEFAULT NULL,
+  `email_subject` varchar(45) DEFAULT NULL,
+  `Content` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
