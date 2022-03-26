@@ -236,12 +236,17 @@ public void ShowMail(Connection con,String Email_id,Statement stat) throws SQLEx
 	if(permission.equals("yes")) {
 	System.out.println();
 	System.out.println("Enter mail number which u want to mark as important ");
-	int mark=scan.nextInt();
+	String mark=scan.nextLine();
+	String[] arrOfmark = mark.split(",", 100);
+	for(String m : arrOfmark) {
+		int store=Integer.parseInt(m);
+		
 	PreparedStatement ps2 = con.prepareStatement("Update emails set Starred='**' where mail_id= ? and id=?");
 	this.Email_id=Email_id;
 	ps2.setString(1, Email_id);
-	ps2.setInt(2, mark);	
+	ps2.setInt(2, store);
 	ps2.executeUpdate();
+	}
 	System.out.println("Marked...");
 	// go to Page3
 	}
@@ -250,7 +255,6 @@ public void ShowMail(Connection con,String Email_id,Statement stat) throws SQLEx
 		System.out.println("till now no mail has been Send");
 	}
 }
-
 
 public void StaredMail(Connection con,String Email_id) throws SQLException {
 	PreparedStatement ps = con.prepareStatement("select * from emails where mail_id=? and Starred='**'");
@@ -270,12 +274,16 @@ public void StaredMail(Connection con,String Email_id) throws SQLException {
 	if(permission.equals("yes")) {
 	System.out.println();
 	System.out.println("Enter mail number which u don't want to mark as important ");
-	int mark=scan.nextInt();
+	String mark=scan.nextLine();
+	String[] arrOfmark = mark.split(",", 100);
+	for(String m : arrOfmark) {
+		int store=Integer.parseInt(m);
 	PreparedStatement ps2 = con.prepareStatement("Update emails set Starred=' ' where mail_id= ? and id=?");
 	this.Email_id=Email_id;
 	ps2.setString(1, Email_id);
-	ps2.setInt(2, mark);	
+	ps2.setInt(2, store);	
 	ps2.executeUpdate();
+	}
 	System.out.println("UnMarked...");
 	// go to Page3
 	}
