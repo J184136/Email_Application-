@@ -237,7 +237,7 @@ public void ShowMail(Connection con,String Email_id,Statement stat) throws SQLEx
 	System.out.println();
 	System.out.println("Enter mail number which u want to mark as important ");
 	String mark=scan.nextLine();
-	String[] arrOfmark = mark.split(",", 100);
+	String[] arrOfmark = mark.split(",");
 	for(String m : arrOfmark) {
 		int store=Integer.parseInt(m);
 		
@@ -275,7 +275,7 @@ public void StaredMail(Connection con,String Email_id) throws SQLException {
 	System.out.println();
 	System.out.println("Enter mail number which u don't want to mark as important ");
 	String mark=scan.nextLine();
-	String[] arrOfmark = mark.split(",", 100);
+	String[] arrOfmark = mark.split(",");
 	for(String m : arrOfmark) {
 		int store=Integer.parseInt(m);
 	PreparedStatement ps2 = con.prepareStatement("Update emails set Starred=' ' where mail_id= ? and id=?");
